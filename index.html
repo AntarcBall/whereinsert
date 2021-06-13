@@ -41,6 +41,7 @@ It was a better tomorrow that we painted.</pre>
     <p></p>
     <div id="sentence"></div>
     이 문장이 어디에 들어가야 할까요?
+    <button id="btn">답이 뭐죠?</button>
     <script>
         function rand(a){
             return Math.ceil(Math.random()*a)
@@ -48,13 +49,25 @@ It was a better tomorrow that we painted.</pre>
         function add(text){
             context.innerHTML = context.innerHTML + text +'\n'
         }
+        btn = document.getElementById('btn')
+        btn.addEventListener('click',function(){
+            context.innerHTML = ''
+            for(i in stcs){
+                if (i> where + frontlength|| i< where - (7-frontlength)) continue
+                if ( where == i ){
+                    add('★Here★') 
+
+                }else add(stcs[i])
+                
+        }
+        })
         context = document.getElementById('dd')
         picked = document.getElementById('sentence')
         stcs = context.innerHTML.split('\n')
-        where = rand(26) +2 
+        where = rand(20) +5
         picked.innerHTML= stcs[where]
-        context.innerHTML = ''
         frontlength = rand(7)+1
+        context.innerHTML = ''
         for(i in stcs){
             if (i> where + frontlength|| i< where - (7-frontlength)) continue
             if ( where == i ) continue

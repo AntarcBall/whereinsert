@@ -8,51 +8,57 @@
 </head>
 <body>
     <pre id="dd">
-        Hi. My name is Homin. This is me in front of the wall painting.
-        The wings are so pretty, aren’t they? 
-        Many people like to take pictures in front of wall paintings.
-        They make old neighborhoods bright and new.
-        Last month, I visited a village with wall paintings in Yeosu.
-        As I was taking a picture, a light went on in my head. I thought, “I’m in the school art club.
-        Why don’t we do wall paintings like these?”
-        I suggested this idea at the next club meeting, and the members loved it.
-        We found a teen volunteer project on the Internet.
-        The project was to do a wall painting in our neighborhood.
-        We applied for it, and two weeks later, our club was selected!
-        The day of the project finally came. The project manager had us meet at the painting site at 9 a.m.
-        The wall was in very poor condition. There were strange writings and drawings on some parts.
-        Other parts had old posters on them.
-        We removed the posters first and painted over the writings and drawings with white paint.
-        The manager let us paint anything we wanted.
-        We decided to paint something cute because the wall was near an elementary school.
-        We divided into three groups and began painting.
-        I was in the group with Minsu and Jiwon.
-        I chose my spot and started to paint my favorite movie character.
-        Minsu painted some flowers and Jiwon did some background drawings.
-        Our club painted for about five hours.
-        After we finished, we got together and shared the day’s experiences.
-        Minsu was very proud of his flower painting.
-        He said, “My flower is so real that a bee landed on it.”
-        I said, “Drawing on a wall was much harder than drawing on paper.”
-        We all agreed that our wall painting wasn’t perfect.
-        But it didn’t matter. We made our neighborhood a little brighter and happier.
-        We were proud of ourselves. We didn’t just paint pictures on a wall that day.
-        It was a better tomorrow that we painted.</pre>
+Hi. My name is Homin. This is me in front of the wall painting.
+The wings are so pretty, aren’t they? 
+Many people like to take pictures in front of wall paintings.
+They make old neighborhoods bright and new.
+Last month, I visited a village with wall paintings in Yeosu.
+As I was taking a picture, a light went on in my head. I thought, “I’m in the school art club.
+Why don’t we do wall paintings like these?”
+I suggested this idea at the next club meeting, and the members loved it.
+We found a teen volunteer project on the Internet.
+The project was to do a wall painting in our neighborhood.
+We applied for it, and two weeks later, our club was selected!
+The day of the project finally came. The project manager had us meet at the painting site at 9 a.m.
+The wall was in very poor condition. There were strange writings and drawings on some parts.
+Other parts had old posters on them.
+We removed the posters first and painted over the writings and drawings with white paint.
+The manager let us paint anything we wanted.
+We decided to paint something cute because the wall was near an elementary school.
+We divided into three groups and began painting.
+I was in the group with Minsu and Jiwon.
+I chose my spot and started to paint my favorite movie character.
+Minsu painted some flowers and Jiwon did some background drawings.
+Our club painted for about five hours.
+After we finished, we got together and shared the day’s experiences.
+Minsu was very proud of his flower painting.
+He said, “My flower is so real that a bee landed on it.”
+I said, “Drawing on a wall was much harder than drawing on paper.”
+We all agreed that our wall painting wasn’t perfect.
+But it didn’t matter. We made our neighborhood a little brighter and happier.
+We were proud of ourselves. We didn’t just paint pictures on a wall that day.
+It was a better tomorrow that we painted.</pre>
     <p></p>
     <div id="sentence"></div>
     이 문장이 어디에 들어가야 할까요?
     <script>
-        
-        context = document.getElementById('dd').innerHTML
-        stcs = context.split('\n')
-        number = Math.ceil(Math.random()*29)
-        what = stcs[number]
-        obj = document.getElementById('sentence')
-        obj.innerHTML= what
-        document.getElementById('dd').innerHTML = ''
+        function rand(a){
+            return Math.ceil(Math.random()*a)
+        }
+        function add(text){
+            context.innerHTML = context.innerHTML + text +'\n'
+        }
+        context = document.getElementById('dd')
+        picked = document.getElementById('sentence')
+        stcs = context.innerHTML.split('\n')
+        where = rand(26) +2 
+        picked.innerHTML= stcs[where]
+        context.innerHTML = ''
+        frontlength = rand(7)+1
         for(i in stcs){
-            if (i==number) continue
-            document.getElementById('dd').innerHTML = document.getElementById('dd').innerHTML + stcs[i] +'\n'
+            if (i> where + frontlength|| i< where - (7-frontlength)) continue
+            if ( where == i ) continue
+            add(stcs[i])
         }
         
     </script>
